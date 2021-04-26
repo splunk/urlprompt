@@ -3,7 +3,7 @@
 *.pot
 *.pyc
 __pycache__
-db.sqlite3
+db.sqlite3*
 media
 
 # Backup files # 
@@ -111,3 +111,4 @@ GitHub.sublime-settings
 .vscode/
 
 node_modules/
+
