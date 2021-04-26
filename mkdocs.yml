@@ -13,9 +13,14 @@ theme:
 
 markdown_extensions:
   - abbr
+  - pymdownx.highlight
+  - pymdownx.superfences
 
 nav:
-  - Phantom App:
-    - app/index.md
   - URLP Server:
     - urlp/index.md
+    - urlp/deployment.md
+    - urlp/prompt_schema.md
+    - urlp/api_documentation.md
+  - Phantom App:
+    - app/index.md
