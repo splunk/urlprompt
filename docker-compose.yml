@@ -11,6 +11,8 @@ services:
 
     urlprompt:
         image: urlprompt
+        volumes:
+        - ./db.sqlite3:/app/db.sqlite3
         build: .
         ports: 
         - "5000:5000"
