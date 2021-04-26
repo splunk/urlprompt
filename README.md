@@ -59,3 +59,9 @@ Run development server
 yarn dev
 ```
 
+### Docs
+
+Run local Mkdocs server
+```
+mkdocs serve
+```
