@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from api import views as api_views
+from api import urls as api_urls
 from rest_framework import routers
 from rest_framework.authtoken import views
 
@@ -26,5 +27,5 @@ router.register(r'prompts', api_views.PromptViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('', include('web.urls'))
-]
+    path('', include('web.urls')),
+] + api_urls.urlpatterns
