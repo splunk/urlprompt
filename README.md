@@ -2,6 +2,8 @@
 
 > Custom URL prompts for Splunk Phantom
 
+Documentation available at https://splunk.github.io/urlprompt/
+
 ## Development
 This section gives you a brief overview on how to set up a development environment
 
