@@ -17,6 +17,11 @@ Install dependencies
 poetry install
 ```
 
+Bootstrap configuration based on .env.example. Adjust as necessary.
+```
+cp .env.example .env
+```
+
 Run database migrations
 ```
 python manage.py migrate
@@ -31,7 +36,6 @@ Get API token. This will create a new user within Django and a Token to authenti
 ```
 python manage.py createapitoken <username>
 ```
-
 
 Run the Django development server
 ```

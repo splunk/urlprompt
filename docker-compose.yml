@@ -11,6 +11,10 @@ services:
 
     urlprompt:
         image: urlprompt
+        environment:
+        - DEBUG=false
+        - DATABASE_URL=sqlite:////app/db.sqlite3
+        - SECRET_KEY=changemepls
         volumes:
         - ./db.sqlite3:/app/db.sqlite3
         build: .
