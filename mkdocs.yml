@@ -1,0 +1,21 @@
+site_name: URL Prompts for Phantom
+
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: black
+  features:
+    - navigation.tabs
+  icon:
+    logo: material/link-variant
+
+markdown_extensions:
+  - abbr
+
+nav:
+  - Phantom App:
+    - app/index.md
+  - URLP Server:
+    - urlp/index.md
