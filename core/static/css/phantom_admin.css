@@ -1,0 +1,156 @@
+/* forgive me lord for i have sinned */
+
+a:link, a:visited { color: #338ab0; text-decoration: underline; }
+
+#header {
+    background-color: #000;
+    color: #c3cbd4;
+}
+#site-name > a {
+    color: #c3cbd4 !important;
+}
+
+#content > h1 {
+    color: #fff
+}
+
+.content {
+    background-color: #171d21;
+}
+
+#content-main caption {
+    background-color: #3c444d;
+}
+
+div.breadcrumbs {
+    background-color: #3c444d;
+}
+
+nav.sticky caption{
+    background-color: #171d21;
+}
+
+#nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+    color: #fff;
+}
+.module, .module table tr{
+    background-color: #171d21 !important;
+    color: #fff !important;
+}
+
+.dashboard .module table th,.dashboard .module table td  {
+    border: 0
+}
+
+.module > a:link, a:visited {
+    color: #fff;
+
+}
+
+.main.shifted > #nav-sidebar,  .submit-row  {
+    background-color: #171d21 !important;
+    border: 0 !important;
+}
+
+#content-related {
+    background-color: #171d21;
+}
+#content-related .module h2, #content-related h3, #content-related p {
+    color: #fff;
+}
+#content-related .module h2, #content-related h3, #content-related p {
+    border: 0 !important;
+}
+
+div#toolbar {
+    background-color: #171d21 !important;
+    border: 0 !important;
+}
+
+#changelist div.actions {
+    background-color: #171d21;
+}
+
+form#changelist-form {
+    background-color: #171d21;
+}
+
+#changelist .paginator{
+    background-color: #171d21 !important;
+    border: 0 !important;
+}
+
+.login #container , .login, .selector .selector-filter{
+    background-color: #3c444d !important;
+    border: 0 !important;
+}
+.login .form-row label {
+    color: #fff !important;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background-color: #5cc05c !important;
+    color: #fff !important;
+    border: 0 !important;
+}
+
+.toggle-nav-sidebar, #nav-sidebar {
+    background-color: #3c444d !important;
+    border: 0;
+}
+
+div#changelist-filter {
+    background-color: #171d21;
+}
+
+div#changelist-filter > h2, h3, a {
+    color: #fff;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: #3c444d !important;
+}
+
+#result_list > thead th, tfoot td {
+    background-color: #3c444d !important;
+    color: #fff !important;
+    border: 0 !important;
+}
+table thead th .text a:focus, table thead th .text a:hover{
+    background-color: #3c444d !important;
+    color: #fff !important;
+}
+
+thead th a:link, thead th a:visited {
+    color: #fff !important;
+}
+
+#changelist .paginator {
+    border: 0 !important;
+}
+
+#result_list > tbody > tr > td, th {
+    border: 0 !important;
+}
+
+#user_form > div > fieldset {
+    color: #fff !important;
+}
+
+label, .selector .selector-available h2, .selector .selector-chosen h2 {
+    color: #fff !important;
+    border: 0 !important;
+}
+
+select {
+    background-color: #171d21!important;
+    color: #fff !important;
+}
+
+a.selector-clearall, a.selector-chooseall {
+    color: #fff !important;
+}
+
+div#content {
+    color: #fff !important
+}

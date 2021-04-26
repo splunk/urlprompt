@@ -1,0 +1,21 @@
+.control-label {
+    font-family: "Splunk Platform Sans", "Splunk Data Sans", Roboto, Droid, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    display:block;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+}
+
+#root > div:nth-child(2) {
+    padding-bottom: 20px;
+}
+
+html {
+    background-color: #000;
+}
+
+fieldset#root {
+    border: 0;
+}

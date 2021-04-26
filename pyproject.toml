@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "urlprompt"
+version = "0.1.0"
+description = "External prompts for Splunk Phantom"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2"
+djangorestframework = "^3.12.4"
+jsonschema = "^3.2.0"
+django-fsm = "^2.7.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"
