@@ -20,6 +20,7 @@ nav:
   - URLP Server:
     - urlp/index.md
     - urlp/deployment.md
+    - urlp/runbook.md
     - urlp/prompt_schema.md
     - urlp/api_documentation.md
   - Phantom App:
