@@ -1,0 +1,15 @@
+@startuml
+
+skinparam monochrome reverse
+skinparam backgroundColor transparent
+
+"Splunk Phantom" -> URLP: Generate Prompt
+"Splunk Phantom" <- URLP: Prompt URL
+"Splunk Phantom" -> Alice: Send Prompt URL
+activate "Splunk Phantom"
+loop until response
+    "Splunk Phantom" <-> URLP: Poll Status
+    Alice -> URLP: Prompt Response
+    deactivate "Splunk Phantom"
+end
+@enduml
