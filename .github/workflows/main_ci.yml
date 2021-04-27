@@ -56,3 +56,13 @@ jobs:
           file: ./Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.prep.outputs.tags }}
+      - name: Automatic Releases
+        uses: marvinpinto/action-automatic-releases@v1.1.2
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "edge"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            LICENSE.txt
+            docker-compose.yml
