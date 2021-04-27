@@ -1,8 +1,11 @@
 @startuml
 
-skinparam monochrome reverse
 skinparam backgroundColor transparent
-
+skinparam monochrome reverse
+...
+note left of "Splunk Phantom"
+Playbook Execution
+end note
 "Splunk Phantom" -> URLP: Generate Prompt
 "Splunk Phantom" <- URLP: Prompt URL
 "Splunk Phantom" -> Alice: Send Prompt URL
@@ -12,4 +15,5 @@ loop until response
     Alice -> URLP: Prompt Response
     deactivate "Splunk Phantom"
 end
+...
 @enduml
