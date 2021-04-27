@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y gcc libffi-dev g++ curl
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install --global yarn
+RUN npm install --global yarn webpack
 
 WORKDIR /app
  
@@ -24,7 +24,7 @@ RUN . /venv/bin/activate && poetry install --no-dev --no-root
 
 COPY . ./
 
-RUN cd web && yarn build
+RUN cd web && yarn install && yarn build
 
 RUN ["chmod", "+x", "./docker-entrypoint.sh"]
 CMD ["./docker-entrypoint.sh"]
