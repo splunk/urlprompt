@@ -16,6 +16,7 @@ from django_fsm import can_proceed
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.exceptions import ValidationError
+from rest_framework.views import APIView
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
     operation_id="List Prompts", operation_description="Lists all Prompts. Requires admin-level permissions."
@@ -80,3 +81,14 @@ class PromptViewSet(mixins.RetrieveModelMixin,
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class TokenView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),
+            'auth': str(request.auth)
+        }
+
+        return Response(content)

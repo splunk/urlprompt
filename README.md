@@ -4,6 +4,17 @@
 
 Documentation available at https://splunk.github.io/urlprompt/
 
+## Repository Structure
+
+    .
+    ├── api                     # DRF-based REST API
+    ├── docs                    # Documentation files for Mkdocs
+    ├── core                    # Core Django models and shared entities
+    ├── phurlprompt             # Phantom App directory
+    ├── web                     # React-based web frontend
+    ├── proxy                   # Nginx configuration for docker-compose
+    └── README.md
+
 ## Development
 This section gives you a brief overview on how to set up a development environment
 

@@ -1,5 +1,7 @@
 site_name: URL Prompts for Phantom
-
+repo_url: https://github.com/splunk/urlprompt
+repo_name: splunk/urlprompt
+edit_uri: edit/master/docs/
 
 theme:
   name: material
@@ -10,6 +12,7 @@ theme:
     - navigation.tabs
   icon:
     logo: material/link-variant
+    repo: fontawesome/brands/github
 
 markdown_extensions:
   - abbr
@@ -25,3 +28,6 @@ nav:
     - urlp/api_documentation.md
   - Phantom App:
     - app/index.md
+
+plugins:
+  - git-revision-date

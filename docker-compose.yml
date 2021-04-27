@@ -10,7 +10,7 @@ services:
         restart: on-failure
 
     urlprompt:
-        image: urlprompt
+        image: ghcr.io/splunk/urlprompt
         environment:
         - DEBUG=false
         - DATABASE_URL=sqlite:////app/db.sqlite3

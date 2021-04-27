@@ -27,5 +27,6 @@ router.register(r'prompts', api_views.PromptViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/tokeninfo', api_views.TokenView.as_view(), name='tokeninfo'),
     path('', include('web.urls')),
 ] + api_urls.urlpatterns
