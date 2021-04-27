@@ -1,5 +1,7 @@
 # URL Prompts for Phantom 
 
+[![Main Branch CI](https://github.com/splunk/urlprompt/actions/workflows/main_ci.yml/badge.svg)](https://github.com/splunk/urlprompt/actions/workflows/main_ci.yml)
+
 This project aims to facilitate external approval and prompts for Splunk Phantom. You may be interested into this project if you're a playbook developer
 who needs to send out prompts to users which do not have access to Splunk Phantom SOAR directly.
 
