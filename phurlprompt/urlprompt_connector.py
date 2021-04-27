@@ -17,7 +17,8 @@ from phantom.action_result import ActionResult
 import requests
 import json
 from bs4 import BeautifulSoup
-
+import time
+import polling2
 
 class RetVal(tuple):
 
@@ -38,7 +39,7 @@ class UrlPromptConnector(BaseConnector):
         # Do note that the app json defines the asset config, so please
         # modify this as you deem fit.
         self._server_url = None
-        self._api_key = None
+        self._api_token = None
         self._verify_server_cert = None
 
 
@@ -104,7 +105,6 @@ class UrlPromptConnector(BaseConnector):
             action_result.add_debug_data({'r_headers': r.headers})
 
         # Process each 'Content-Type' of response separately
-
         # Process a json response
         if 'json' in r.headers.get('Content-Type', ''):
             return self._process_json_response(r, action_result)
@@ -135,6 +135,11 @@ class UrlPromptConnector(BaseConnector):
 
         resp_json = None
 
+        headers = {
+            "Authorization": f"Token {self._api_token}",
+            "Accept": "application/json"
+        }
+
         try:
             request_func = getattr(requests, method)
         except AttributeError:
@@ -144,13 +149,14 @@ class UrlPromptConnector(BaseConnector):
             )
 
         # Create a URL to connect to
-        url = self._base_url + endpoint
+        url = self._server_url + endpoint
 
         try:
             r = request_func(
                 url,
                 # auth=(username, password),  # basic authentication
                 verify=config.get('verify_server_cert', False),
+                headers=headers,
                 **kwargs
             )
         except Exception as e:
@@ -169,15 +175,22 @@ class UrlPromptConnector(BaseConnector):
         self.save_progress("Connecting to endpoint")
         # make rest call
         ret_val, response = self._make_rest_call(
-            '', action_result, params=None, headers=None
+            'api/tokeninfo', action_result, params=None
         )
-
-        if response.status_code != 200:
+        
+        if phantom.is_fail(ret_val):
             self.save_progress("Test Connectivity Failed.")
             return action_result.get_status()
 
+        user = response["user"]
+        self.save_progress(f"Connected with user: {user}")
+
         self.save_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
+
+
+    def _prompt_is_completed(self, response):
+        return response[1]["status"] == "complete"
 
     def _handle_check_status(self, param):
         # Implement the handler here
@@ -188,39 +201,41 @@ class UrlPromptConnector(BaseConnector):
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         # Access action parameters passed in the 'param' dictionary
-
+        prompt_id = param['id']
         # Required values can be accessed directly
         interval = param['interval']
 
         # Optional values should use the .get() function
-        timeout = param.get('timeout', '')
+        timeout = param.get('timeout')
 
-        # make rest call
+
+        if timeout:
+            polling2.poll(
+                lambda: self._make_rest_call(
+                f'api/prompts/{prompt_id}', action_result, params=None
+                ),
+                check_success=self._prompt_is_completed,
+                step=interval,
+                timeout=timeout)
+        else:
+            polling2.poll(
+                lambda: self._make_rest_call(
+                f'api/prompts/{prompt_id}', action_result, params=None
+                ),
+                check_success=self._prompt_is_completed,
+                step=interval,
+                poll_forever=True)
+
         ret_val, response = self._make_rest_call(
-            '/endpoint', action_result, params=None, headers=None
-        )
+            f'api/prompts/{prompt_id}', action_result, params=None
+            )
 
         if phantom.is_fail(ret_val):
-            # the call to the 3rd party device or service failed, action result should contain all the error details
-            # for now the return is commented out, but after implementation, return from here
-            # return action_result.get_status()
-            pass
+            return action_result.get_status()
 
-        # Now post process the data,  uncomment code as you deem fit
-
-        # Add the response into the data section
         action_result.add_data(response)
 
-        # Add a dictionary that is made up of the most important values from data into the summary
-        # summary = action_result.update_summary({})
-        # summary['num_data'] = len(action_result['data'])
-
-        # Return success, no need to set the message, only the status
-        # BaseConnector will create a textual message based off of the summary dictionary
-        # return action_result.set_status(phantom.APP_SUCCESS)
-
-        # For now return Error with a message, in case of success we don't set the message, but use the summary
-        return action_result.set_status(phantom.APP_ERROR, "Action not yet implemented")
+        return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_create_boolean_prompt(self, param):
         # Implement the handler here
@@ -324,35 +339,36 @@ class UrlPromptConnector(BaseConnector):
         description = param['description']
         text_label = param['text_label']
 
-        # Optional values should use the .get() function
-        # optional_parameter = param.get('optional_parameter', 'default_value')
+        payload = {
+            "schema": {
+                "title": title,
+                "description": description,
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                    "text": {"type": "string", "title": text_label}
+                }
+            }
+        }
 
         # make rest call
         ret_val, response = self._make_rest_call(
-            '/endpoint', action_result, params=None, headers=None
+            'api/prompts/', action_result, method="post", params=None, json=payload
         )
 
         if phantom.is_fail(ret_val):
-            # the call to the 3rd party device or service failed, action result should contain all the error details
-            # for now the return is commented out, but after implementation, return from here
-            # return action_result.get_status()
-            pass
+            return action_result.get_status()
+        
+        prompt_id = response["id"]
+        response["web_url"] = self._server_url + f"?id={prompt_id}"
 
-        # Now post process the data,  uncomment code as you deem fit
-
-        # Add the response into the data section
         action_result.add_data(response)
 
         # Add a dictionary that is made up of the most important values from data into the summary
-        # summary = action_result.update_summary({})
-        # summary['num_data'] = len(action_result['data'])
+        summary = action_result.update_summary({})
+        summary['web_url'] = response['web_url']
 
-        # Return success, no need to set the message, only the status
-        # BaseConnector will create a textual message based off of the summary dictionary
-        # return action_result.set_status(phantom.APP_SUCCESS)
-
-        # For now return Error with a message, in case of success we don't set the message, but use the summary
-        return action_result.set_status(phantom.APP_ERROR, "Action not yet implemented")
+        return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param):
         ret_val = phantom.APP_SUCCESS
@@ -396,9 +412,9 @@ class UrlPromptConnector(BaseConnector):
         optional_config_name = config.get('optional_config_name')
         """
 
-        self._base_url = config['server_url']
+        self._server_url = config['server_url']
         self._api_token = config['api_token']
-        self._verify_server_cert = config['verify_server_cert']
+        self._verify_server_cert = config.get('verify_server_cert', False)
 
         return phantom.APP_SUCCESS
 

@@ -44,7 +44,7 @@ export default function Prompt(props) {
            
 
       {prompt.schema && prompt.status !== "complete" && <Card style={{width: "100%"}}>
-            <Card.Header title={prompt.schema.title} subtitle={`Created on ${prompt.created_at} by ${prompt.created_by}`}>
+            <Card.Header title={prompt.schema.title} subtitle={`Created on ${prompt.created_at} by ${prompt.created_by.username}`}>
             </Card.Header>
             <Card.Body>
             <ThemedForm onSubmit={onSubmit} formData={formData} schema={prompt.schema}>

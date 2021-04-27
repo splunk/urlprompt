@@ -38,6 +38,13 @@
             "order": 2
         }
     },
+    "pip_dependencies": {
+        "pypi": [
+            {
+                "module": "polling2"
+            }
+        ]
+    },
     "actions": [
         {
             "action": "test connectivity",
@@ -58,6 +65,13 @@
             "type": "contain",
             "read_only": false,
             "parameters": {
+                "id": {
+                    "description": "Prompt ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 1
+                },
                 "interval": {
                     "description": "Polling interval in minutes",
                     "data_type": "numeric",
@@ -66,7 +80,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 0
+                    "order": 1
                 },
                 "timeout": {
                     "description": "Timeout in minutes",
@@ -76,7 +90,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 1
+                    "order": 2
                 }
             },
             "output": [
