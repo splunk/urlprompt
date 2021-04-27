@@ -250,40 +250,41 @@ class UrlPromptConnector(BaseConnector):
         # Required values can be accessed directly
         title = param['title']
         description = param['description']
+        bool_label= param['bool_label']
 
-        # Optional values should use the .get() function
-        bool_label = param.get('bool_label', '')
+        payload = {
+            "schema": {
+                "title": title,
+                "description": description,
+                "type": "object",
+                "required": ["bool"],
+                "properties": {
+                    "bool": {"type": "boolean", "title": bool_label}
+                }
+            }
+        }
 
         # make rest call
         ret_val, response = self._make_rest_call(
-            '/endpoint', action_result, params=None, headers=None
+            'api/prompts/', action_result, method="post", params=None, json=payload
         )
 
         if phantom.is_fail(ret_val):
-            # the call to the 3rd party device or service failed, action result should contain all the error details
-            # for now the return is commented out, but after implementation, return from here
-            # return action_result.get_status()
-            pass
+            return action_result.get_status()
+        
+        prompt_id = response["id"]
+        response["web_url"] = self._server_url + f"?id={prompt_id}"
 
-        # Now post process the data,  uncomment code as you deem fit
-
-        # Add the response into the data section
         action_result.add_data(response)
 
         # Add a dictionary that is made up of the most important values from data into the summary
-        # summary = action_result.update_summary({})
-        # summary['num_data'] = len(action_result['data'])
+        summary = action_result.update_summary({})
+        summary['web_url'] = response['web_url']
 
-        # Return success, no need to set the message, only the status
-        # BaseConnector will create a textual message based off of the summary dictionary
-        # return action_result.set_status(phantom.APP_SUCCESS)
+        return action_result.set_status(phantom.APP_SUCCESS)
 
-        # For now return Error with a message, in case of success we don't set the message, but use the summary
-        return action_result.set_status(phantom.APP_ERROR, "Action not yet implemented")
 
     def _handle_create_json_prompt(self, param):
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
 
         # Add an action result object to self (BaseConnector) to represent the action for this param
@@ -292,37 +293,30 @@ class UrlPromptConnector(BaseConnector):
         # Access action parameters passed in the 'param' dictionary
 
         # Required values can be accessed directly
-        schema = param['schema']
-
-        # Optional values should use the .get() function
-        # optional_parameter = param.get('optional_parameter', 'default_value')
+        try:
+            payload = json.loads(param['schema'])
+        except:
+            return action_result.set_status(phantom.APP_ERROR, "Could not read JSON schema")
 
         # make rest call
         ret_val, response = self._make_rest_call(
-            '/endpoint', action_result, params=None, headers=None
+            'api/prompts/', action_result, method="post", params=None, json=payload
         )
 
         if phantom.is_fail(ret_val):
-            # the call to the 3rd party device or service failed, action result should contain all the error details
-            # for now the return is commented out, but after implementation, return from here
-            # return action_result.get_status()
-            pass
+            return action_result.get_status()
+        
+        prompt_id = response["id"]
+        response["web_url"] = self._server_url + f"?id={prompt_id}"
 
-        # Now post process the data,  uncomment code as you deem fit
-
-        # Add the response into the data section
         action_result.add_data(response)
 
         # Add a dictionary that is made up of the most important values from data into the summary
-        # summary = action_result.update_summary({})
-        # summary['num_data'] = len(action_result['data'])
+        summary = action_result.update_summary({})
+        summary['web_url'] = response['web_url']
 
-        # Return success, no need to set the message, only the status
-        # BaseConnector will create a textual message based off of the summary dictionary
-        # return action_result.set_status(phantom.APP_SUCCESS)
+        return action_result.set_status(phantom.APP_SUCCESS)
 
-        # For now return Error with a message, in case of success we don't set the message, but use the summary
-        return action_result.set_status(phantom.APP_ERROR, "Action not yet implemented")
 
     def _handle_create_text_prompt(self, param):
         # Implement the handler here
