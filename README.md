@@ -2,6 +2,8 @@
 
 > Custom URL prompts for Splunk Phantom
 
+[![Main Branch CI](https://github.com/splunk/urlprompt/actions/workflows/main_ci.yml/badge.svg)](https://github.com/splunk/urlprompt/actions/workflows/main_ci.yml)
+
 Documentation available at https://splunk.github.io/urlprompt/
 
 ## Repository Structure
