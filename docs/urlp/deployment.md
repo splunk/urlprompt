@@ -4,23 +4,22 @@ This guide outlines how to set up a new URLP deployment.
 
 ## Prerequisites
 
-* docker & docker-compose
+* docker 
+* docker-compose
 
-## Docker
+## Basic Setup
 
-To get a basic instance up and running, execute the following command
-
+Download the docker-compose.yml on the deployment host:
 ```
-docker run -e SECRET_KEY=changeme -e DATABASE_URL=sqlite:////db/db.sqlite3 -v <absolute-path-to-db-folder>:/db -p 5000:5000 ghcr.io/splunk/urlprompt:latest
+curl https://github.com/splunk/urlprompt/releases/download/edge/docker-compose.yml --output docker-compose.yml
 ```
 
-## Docker Compose
+Create the database folder which will persist the database:
+```
+mkdir db
+```
 
-Alternatively, you can use [docker-compose](https://docs.docker.com/compose/) to get a more advanced deployment with an Nginx reverse proxy to provide HTTPS.
-
-
-## Configuration
-
-
-## HTTPS
-
+Run the stack: 
+```
+docker-compose up
+```
