@@ -6,6 +6,12 @@
 
 Documentation available at https://splunk.github.io/urlprompt/
 
+![](docs/assets/prompts/integer_prompt.png)
+
+## Overview
+
+![](docs/assets/diagrams/out/overview.png)
+
 ## Repository Structure
 
     .
