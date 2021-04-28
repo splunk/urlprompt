@@ -38,7 +38,7 @@ COPY --from=python-build /venv  /venv
 COPY --chown=django:django . ${APP_HOME}
 COPY --from=web-build --chown=django:django ${APP_HOME}/web ${APP_HOME}/web
 
-RUN chown django:django ${APP_HOME}
+RUN chown -R django:django ${APP_HOME}
 RUN . /venv/bin/activate
 
 RUN ["chmod", "+x", "./docker-entrypoint.sh"]
