@@ -23,6 +23,10 @@ jobs:
         pip install poetry pytest
         poetry install
     - name: Test with pytest
+      env:
+        SECRET_KEY: TestKey
+        DATABASE_URL: sqlite:///db.sqlite3
+        DEBUG: true
       run: |
         poetry run pytest
 
