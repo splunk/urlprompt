@@ -69,8 +69,8 @@ jobs:
       
       - name: Create ZIP packages
         run: | 
-          zip -r docker-compose-standalone.zip compose/standalone/*
-          zip -r docker-compose-proxy.zip compose/proxy/*
+          zip -rj docker-compose-standalone.zip compose/standalone/*
+          zip -rj docker-compose-proxy.zip compose/proxy/*
 
       - name: Automatic Releases
         uses: marvinpinto/action-automatic-releases@v1.1.2
