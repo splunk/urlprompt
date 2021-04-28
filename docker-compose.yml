@@ -13,10 +13,10 @@ services:
         image: ghcr.io/splunk/urlprompt
         environment:
         - DEBUG=false
-        - DATABASE_URL=sqlite:////app/db.sqlite3
+        - DATABASE_URL=sqlite:////app/db/db.sqlite3
         - SECRET_KEY=changemepls
         volumes:
-        - ./db.sqlite3:/app/db.sqlite3
+        - ./db/db.sqlite3:/app/db/db.sqlite3
         build: .
         ports: 
         - "5000:5000"
