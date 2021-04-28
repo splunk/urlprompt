@@ -289,29 +289,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    Docker Compose
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#https" class="md-nav__link">
-    HTTPS
+  <a href="#basic-setup" class="md-nav__link">
+    Basic Setup
   </a>
   
 </li>
@@ -441,29 +420,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-compose" class="md-nav__link">
-    Docker Compose
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#https" class="md-nav__link">
-    HTTPS
+  <a href="#basic-setup" class="md-nav__link">
+    Basic Setup
   </a>
   
 </li>
@@ -489,16 +447,18 @@
 <p>This guide outlines how to set up a new URLP deployment.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>docker &amp; docker-compose</li>
+<li>docker </li>
+<li>docker-compose</li>
 </ul>
-<h2 id="docker">Docker</h2>
-<p>To get a basic instance up and running, execute the following command</p>
-<div class="highlight"><pre><span></span><code>docker run -p 5000:5000 ghcr.io/splunk/urlprompt:latest
+<h2 id="basic-setup">Basic Setup</h2>
+<ol>
+<li>Download the docker-compose config from the <a href="https://github.com/splunk/urlprompt/releases">releases</a> page.</li>
+<li>Extract the archive on the deployment host</li>
+<li>Switch into the extracted directory</li>
+<li>Run the stack</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker-compose up
 </code></pre></div>
-<h2 id="docker-compose">Docker Compose</h2>
-<p>Alternatively, you can use <a href="https://docs.docker.com/compose/">docker-compose</a> to get a more advanced deployment with an Nginx reverse proxy to provide HTTPS.</p>
-<h2 id="configuration">Configuration</h2>
-<h2 id="https">HTTPS</h2>
                 
                   
                     
@@ -507,7 +467,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-27
+      Last update: 2021-04-28
     
   </small>
 </div>
