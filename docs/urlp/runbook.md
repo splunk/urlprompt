@@ -2,8 +2,9 @@
 
 Useful commands to administer a running URLP deployment
 
+## Management Commands
 
-## Create shell inside container
+### Create shell inside container
 
 ```
 docker exec -it <docker-container-id> /bin/bash
@@ -11,13 +12,13 @@ source /venv/bin/activate
 ```
 
 
-## Create new API user + token
+### Create new API user + token
 ```
 python manage.py createapitoken <new-user>
 ```
 
 
-## Reset superuser password
+### Reset superuser password
 ```
 python manage.py changepassword <superuser>
 ```
