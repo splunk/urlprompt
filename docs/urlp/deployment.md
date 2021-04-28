@@ -9,17 +9,11 @@ This guide outlines how to set up a new URLP deployment.
 
 ## Basic Setup
 
-Download the docker-compose.yml on the deployment host:
-```
-curl https://github.com/splunk/urlprompt/releases/download/edge/docker-compose.yml --output docker-compose.yml
-```
+1. Download the docker-compose config from the [releases](https://github.com/splunk/urlprompt/releases) page.
+2. Extract the archive on the deployment host
+3. Switch into the extracted directory
+4. Run the stack
 
-Create the database folder which will persist the database:
-```
-mkdir db
-```
-
-Run the stack: 
 ```
 docker-compose up
 ```
