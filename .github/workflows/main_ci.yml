@@ -3,7 +3,8 @@ name: Main Branch CI
 on:
   push:
     branches: master
-
+    tags:
+      - '*'
 jobs:
   test:
     runs-on: ubuntu-latest
