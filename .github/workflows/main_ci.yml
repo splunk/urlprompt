@@ -76,4 +76,4 @@ jobs:
           title: "Development Build"
           files: |
             LICENSE.txt
-            docker-compose.yml
+            ./compose/standalone/docker-compose.yml
