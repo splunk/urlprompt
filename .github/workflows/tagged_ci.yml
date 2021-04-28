@@ -1,4 +1,4 @@
-name: Main Branch CI
+name: Release CI
 
 on:
   push:
