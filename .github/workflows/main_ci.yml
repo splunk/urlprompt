@@ -70,7 +70,7 @@ jobs:
       - name: Create ZIP packages
         run: | 
           cd compose && zip -r docker-compose-standalone.zip standalone/*
-          cd compose && zip -r docker-compose-proxy.zip proxy/*
+          zip -r docker-compose-proxy.zip proxy/*
 
       - name: Automatic Releases
         uses: marvinpinto/action-automatic-releases@v1.1.2
