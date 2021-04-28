@@ -2,7 +2,8 @@ name: Main Branch CI
 
 on:
   push:
-    branches: master
+    tags:
+      - "v*"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -102,8 +103,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.1.2
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "edge"
-          prerelease: true
+          prerelease: false
           title: "Development Build"
           files: |
             LICENSE.txt
