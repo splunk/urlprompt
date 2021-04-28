@@ -246,9 +246,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Getting started
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    Basic Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-with-self-signed-https" class="md-nav__link">
+    Setup with self-signed HTTPS
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -369,6 +413,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    Basic Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-with-self-signed-https" class="md-nav__link">
+    Setup with self-signed HTTPS
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -385,6 +458,34 @@
                 
                 
                 <h1 id="getting-started">Getting started</h1>
+<p>This guide outlines how to set up a new URLP deployment. The supported deployment option is through provided docker-compose files using a SQLite3 database as persistence which should
+work fine for most scenarios.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>CentOS</li>
+<li>Docker </li>
+<li>docker-compose</li>
+</ul>
+<h2 id="basic-setup">Basic Setup</h2>
+<ol>
+<li>Download the standalone docker-compose config from the <a href="https://github.com/splunk/urlprompt/releases">releases</a> page.</li>
+<li>Extract the archive on the deployment host</li>
+<li>Switch into the extracted directory</li>
+<li>Run the stack</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker-compose up
+</code></pre></div>
+<h2 id="setup-with-self-signed-https">Setup with self-signed HTTPS</h2>
+<p>The proxy docker-compose configuration additionally deploys an nginx container as a reverse proxy to terminate TLS connection. By default, the bundle contains an insecure,
+self-signed key. It is strongly recommended to either deploy a trusted cert or <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-on-debian-8">generate your own</a>. </p>
+<ol>
+<li>Download the proxy docker-compose config from the <a href="https://github.com/splunk/urlprompt/releases">releases</a> page.</li>
+<li>Extract the archive on the deployment host</li>
+<li>Switch into the extracted directory</li>
+<li>Run the stack</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker-compose up
+</code></pre></div>
                 
                   
                     
@@ -393,7 +494,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-26
+      Last update: 2021-04-28
     
   </small>
 </div>
