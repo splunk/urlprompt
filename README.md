@@ -20,7 +20,7 @@ Documentation available at https://splunk.github.io/urlprompt/
     ├── core                    # Core Django models and shared entities
     ├── phurlprompt             # Phantom App directory
     ├── web                     # React-based web frontend
-    ├── proxy                   # Nginx configuration for docker-compose
+    ├── compose                 # Configuration for docker-compose
     └── README.md
 
 ## Development
