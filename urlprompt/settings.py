@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'core',
     'api',
     'web',
+    'auditlog',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'auditlog.middleware.AuditlogMiddleware',
 ]
 
 ROOT_URLCONF = 'urlprompt.urls'

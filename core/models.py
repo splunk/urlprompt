@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from django_fsm import FSMField, transition
+from auditlog.registry import auditlog
 
 
 class CustomUser(AbstractUser):
@@ -34,3 +35,5 @@ class Prompt(models.Model):
         self.clean()
 
         return super(Prompt, self).save(*args, **kwargs)
+
+auditlog.register(Prompt)
