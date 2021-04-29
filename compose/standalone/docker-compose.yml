@@ -6,6 +6,8 @@ services:
         - DEBUG=false
         - DATABASE_URL=sqlite:////app/db/db.sqlite3
         - SECRET_KEY=changemepls
+        - URLPROMPT_ADMIN_USER=urladmin
+        - URLPROMPT_ADMIN_PASS=changeme
         volumes:
         - ./db/:/app/db/
         build: .
