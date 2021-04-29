@@ -95,12 +95,12 @@ jobs:
       
       - name: Create ZIP packages
         run: | 
-          cd compose && zip -r docker-compose-standalone.zip standalone/*
-          zip -r docker-compose-proxy.zip proxy/*
+          cd compose && zip -r docker-compose-standalone-edge.zip standalone/*
+          zip -r docker-compose-proxy-edge.zip proxy/*
 
       - name: Package Phantom app
         run: |
-          tar -zcvf phurlprompt.tgz phurlprompt
+          tar -zcvf phurlprompt-edge.tgz phurlprompt
 
       - name: Automatic Releases
         uses: marvinpinto/action-automatic-releases@v1.1.2
@@ -111,6 +111,6 @@ jobs:
           title: "Development Build"
           files: |
             LICENSE.txt
-            compose/docker-compose-standalone.zip
-            compose/docker-compose-proxy.zip
-            phurlprompt.tgz
+            compose/docker-compose-standalone-edge.zip
+            compose/docker-compose-proxy-edge.zip
+            phurlprompt-edge.tgz
