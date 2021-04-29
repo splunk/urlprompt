@@ -130,6 +130,27 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "django-ipware"
+version = "3.0.2"
+description = "A Django utility application that returns client's real IP address"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django-structlog"
+version = "2.1.0"
+description = "Structured Logging for Django"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = ">=1.11"
+django-ipware = "*"
+structlog = "*"
+
+[[package]]
 name = "djangorestframework"
 version = "3.12.4"
 description = "Web APIs for Django, made easy."
@@ -593,6 +614,19 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "structlog"
+version = "21.1.0"
+description = "Structured Logging for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+dev = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest-asyncio", "pytest-randomly", "pytest (>=6.0)", "simplejson", "furo", "sphinx", "sphinx-toolbox", "twisted", "pre-commit"]
+docs = ["furo", "sphinx", "sphinx-toolbox", "twisted"]
+tests = ["coverage", "freezegun (>=0.2.8)", "pretend", "pytest-asyncio", "pytest-randomly", "pytest (>=6.0)", "simplejson"]
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -664,7 +698,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "f26df9a21d84cb3e3f3f0f3c62ebc444a41691d4ddb96b9d36482d4a3f527367"
+content-hash = "4034fa86757ccf71a7c8fbc47949d1baadba18bd7d27f7d77d73f4fbe1a7b734"
 
 [metadata.files]
 asgiref = [
@@ -718,6 +752,13 @@ django-environ = [
 django-fsm = [
     {file = "django-fsm-2.7.1.tar.gz", hash = "sha256:219b204777a932720d8583cb1f34713bd08b4713e1beb39ab2e674810e21d5e9"},
     {file = "django_fsm-2.7.1-py2.py3-none-any.whl", hash = "sha256:c96a844853de0f5dc67791b64beb367b5d56f992dff7c00f9b88c483e09f15ec"},
+]
+django-ipware = [
+    {file = "django-ipware-3.0.2.tar.gz", hash = "sha256:c7df8e1410a8e5d6b1fbae58728402ea59950f043c3582e033e866f0f0cf5e94"},
+]
+django-structlog = [
+    {file = "django-structlog-2.1.0.tar.gz", hash = "sha256:6c37d7e1dabc9dc3136bd02c0fb551976511d4bc43a88c303aabffedde8a8cea"},
+    {file = "django_structlog-2.1.0-py3-none-any.whl", hash = "sha256:3c482bdce8b8c6f01a459198063cece14617d190fb54ddf2457bf1f88e7b38d2"},
 ]
 djangorestframework = [
     {file = "djangorestframework-3.12.4-py3-none-any.whl", hash = "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf"},
@@ -991,6 +1032,10 @@ smmap = [
 sqlparse = [
     {file = "sqlparse-0.4.1-py3-none-any.whl", hash = "sha256:017cde379adbd6a1f15a61873f43e8274179378e95ef3fede90b5aa64d304ed0"},
     {file = "sqlparse-0.4.1.tar.gz", hash = "sha256:0f91fd2e829c44362cbcfab3e9ae12e22badaa8a29ad5ff599f9ec109f0454e8"},
+]
+structlog = [
+    {file = "structlog-21.1.0-py2.py3-none-any.whl", hash = "sha256:62f06fc0ee32fb8580f0715eea66cb87271eb7efb0eaf9af6b639cba8981de47"},
+    {file = "structlog-21.1.0.tar.gz", hash = "sha256:d9d2d890532e8db83c6977a2a676fb1889922ff0c26ad4dc0ecac26f9fafbc57"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},

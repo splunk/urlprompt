@@ -1,22 +1,28 @@
-from django.shortcuts import render
-from rest_framework import viewsets, status
-from api.serializers import PromptSerializer
-from core.models import Prompt
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication
-from rest_framework.response import Response
-from core.permissions import IsAdminUser
-from rest_framework.decorators import action
-from django.http import HttpResponse
-from django.forms.models import model_to_dict
 import json
-from rest_framework import viewsets, mixins
-from django_fsm import can_proceed
+
+import structlog
+from core.models import Prompt
+from core.permissions import IsAdminUser
+from django.forms.models import model_to_dict
+from django.http import HttpResponse
+from django.shortcuts import render
 from django.utils.decorators import method_decorator
+from django_fsm import can_proceed
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework import mixins, status, viewsets
+from rest_framework.authentication import (SessionAuthentication,
+                                           TokenAuthentication)
+from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from api.serializers import PromptSerializer
+
+logger = structlog.get_logger(__name__)
+
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
     operation_id="List Prompts", operation_description="Lists all Prompts. Requires admin-level permissions."
@@ -53,6 +59,7 @@ class PromptViewSet(mixins.RetrieveModelMixin,
     @swagger_auto_schema(operation_id="Create Prompt")
     def create(self, request, *args, **kwargs):
         """Create a new Prompt instance"""
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
