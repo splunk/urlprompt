@@ -99,6 +99,10 @@ jobs:
           cd compose && zip -r docker-compose-standalone.zip standalone/*
           zip -r docker-compose-proxy.zip proxy/*
 
+      - name: Package Phantom app
+        run: |
+          tar -zcvf phurlprompt-${VERSION}.tgz phurlprompt
+
       - name: Automatic Releases
         uses: marvinpinto/action-automatic-releases@v1.1.2
         with:
@@ -107,5 +111,6 @@ jobs:
           title: "Development Build"
           files: |
             LICENSE.txt
-            compose/docker-compose-standalone.zip
-            compose/docker-compose-proxy.zip
+            compose/docker-compose-standalone-${VERSION}.zip
+            compose/docker-compose-proxy-${VERSION}.zip
+            phurlprompt-${VERSION}.tgz
