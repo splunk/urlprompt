@@ -51,6 +51,8 @@ export default function Prompt(props) {
         <div>
           <Heading level={2}>{prompt.schema.title}</Heading>
           <DL style={{marginBottom: "30px"}}>
+            <DL.Term>ID</DL.Term>
+            <DL.Description>{prompt.id}</DL.Description>
             <DL.Term>Creator</DL.Term>
             <DL.Description>{prompt.created_by.username}</DL.Description>
             <DL.Term>Time Created</DL.Term>
