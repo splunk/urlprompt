@@ -1,5 +1,5 @@
 export function fetchPrompt(id) {
-    return fetch(`/api/prompts/${id}`).then(res => res.json())
+    return fetch(`/api/prompts/${id}/`).then(res => res.json())
 }
 
 export function answerPrompt(id, responseData) {
