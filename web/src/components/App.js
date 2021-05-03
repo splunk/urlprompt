@@ -17,7 +17,7 @@ export default function App() {
                     </ColumnLayout.Column>
                     <ColumnLayout.Column span={8}>
                         <Heading level={4} style={{ marginBottom: '30px', color: '#7ecd7e' }}>
-                            URL Prompt for Phantom
+                            URL Prompts for Phantom
                     </Heading>
                         {hasID && <Prompt id={urlParams.get('id')}></Prompt>}
                     </ColumnLayout.Column>
