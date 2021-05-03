@@ -19,6 +19,7 @@
     "@splunk/react-ui": "^4.0.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
+    "moment": "^2.29.1",
     "react": "^16",
     "react-dom": "^16",
     "react-router-dom": "^5.2.0",

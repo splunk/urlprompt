@@ -6,6 +6,8 @@ import Heading from '@splunk/react-ui/Heading'
 import Message from '@splunk/react-ui/Message'
 import P from '@splunk/react-ui/Paragraph';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
+import DL from '@splunk/react-ui/DefinitionList';
+import moment from 'moment'
 
 import PromptTheme from '../lib/theme'
 import { fetchPrompt, answerPrompt } from '../lib/api'
@@ -48,6 +50,14 @@ export default function Prompt(props) {
       {prompt.schema && prompt.status !== "complete" &&
         <div>
           <Heading level={2}>{prompt.schema.title}</Heading>
+          <DL style={{marginBottom: "30px"}}>
+            <DL.Term>Creator</DL.Term>
+            <DL.Description>{prompt.created_by.username}</DL.Description>
+            <DL.Term>Time Created</DL.Term>
+            <DL.Description>{moment(prompt.created_at).format('MMMM Do YYYY, h:mm:ss a')}</DL.Description>
+            <DL.Term>Status</DL.Term>
+            <DL.Description>{prompt.status}</DL.Description>
+        </DL>
           <ThemedForm onSubmit={onSubmit} formData={formData} schema={prompt.schema}>
             <Button appearance="flat" style={{ float: "right" }} type="submit">Submit</Button>
           </ThemedForm></div>}

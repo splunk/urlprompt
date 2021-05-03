@@ -2,7 +2,7 @@ import React from 'react'
 import ColumnLayout from '@splunk/react-ui/ColumnLayout';
 import { SplunkThemeProvider } from '@splunk/themes';
 import Prompt from './Prompt'
-import Chip from '@splunk/react-ui/Chip';
+import Heading from '@splunk/react-ui/Heading';
 
 export default function App() {
 
@@ -16,9 +16,9 @@ export default function App() {
                     <ColumnLayout.Column span={2}>
                     </ColumnLayout.Column>
                     <ColumnLayout.Column span={8}>
-                        <Chip appearance="secondary" style={{ marginBottom: '30px' }}>
+                        <Heading level={4} style={{ marginBottom: '30px', color: '#7ecd7e' }}>
                             URL Prompt for Phantom
-                    </Chip>
+                    </Heading>
                         {hasID && <Prompt id={urlParams.get('id')}></Prompt>}
                     </ColumnLayout.Column>
                     <ColumnLayout.Column span={2}>
