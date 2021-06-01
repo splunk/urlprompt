@@ -17,8 +17,8 @@ from phantom.action_result import ActionResult
 import requests
 import json
 from bs4 import BeautifulSoup
-import time
 import polling2
+
 
 class RetVal(tuple):
 
@@ -41,7 +41,6 @@ class UrlPromptConnector(BaseConnector):
         self._server_url = None
         self._api_token = None
         self._verify_server_cert = None
-
 
     def _process_empty_response(self, response, action_result):
         if response.status_code == 200:
@@ -177,7 +176,7 @@ class UrlPromptConnector(BaseConnector):
         ret_val, response = self._make_rest_call(
             'api/tokeninfo', action_result, params=None
         )
-        
+
         if phantom.is_fail(ret_val):
             self.save_progress("Test Connectivity Failed.")
             return action_result.get_status()
@@ -187,7 +186,6 @@ class UrlPromptConnector(BaseConnector):
 
         self.save_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
-
 
     def _prompt_is_completed(self, response):
         return response[1]["status"] == "complete"
@@ -208,27 +206,22 @@ class UrlPromptConnector(BaseConnector):
         # Optional values should use the .get() function
         timeout = param.get('timeout')
 
-
         if timeout:
             polling2.poll(
-                lambda: self._make_rest_call(
-                f'api/prompts/{prompt_id}', action_result, params=None
-                ),
+                lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
                 check_success=self._prompt_is_completed,
                 step=interval,
                 timeout=timeout)
         else:
             polling2.poll(
-                lambda: self._make_rest_call(
-                f'api/prompts/{prompt_id}', action_result, params=None
-                ),
+                lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
                 check_success=self._prompt_is_completed,
                 step=interval,
                 poll_forever=True)
 
         ret_val, response = self._make_rest_call(
             f'api/prompts/{prompt_id}', action_result, params=None
-            )
+        )
 
         if phantom.is_fail(ret_val):
             return action_result.get_status()
@@ -250,7 +243,7 @@ class UrlPromptConnector(BaseConnector):
         # Required values can be accessed directly
         title = param['title']
         description = param['description']
-        bool_label= param['bool_label']
+        bool_label = param['bool_label']
 
         payload = {
             "schema": {
@@ -271,7 +264,7 @@ class UrlPromptConnector(BaseConnector):
 
         if phantom.is_fail(ret_val):
             return action_result.get_status()
-        
+
         prompt_id = response["id"]
         response["web_url"] = self._server_url + f"?id={prompt_id}"
 
@@ -282,7 +275,6 @@ class UrlPromptConnector(BaseConnector):
         summary['web_url'] = response['web_url']
 
         return action_result.set_status(phantom.APP_SUCCESS)
-
 
     def _handle_create_json_prompt(self, param):
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
@@ -305,7 +297,7 @@ class UrlPromptConnector(BaseConnector):
 
         if phantom.is_fail(ret_val):
             return action_result.get_status()
-        
+
         prompt_id = response["id"]
         response["web_url"] = self._server_url + f"?id={prompt_id}"
 
@@ -317,7 +309,6 @@ class UrlPromptConnector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
-
     def _handle_create_text_prompt(self, param):
         # Implement the handler here
         # use self.save_progress(...) to send progress messages back to the platform
@@ -325,8 +316,6 @@ class UrlPromptConnector(BaseConnector):
 
         # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
-
-        # Access action parameters passed in the 'param' dictionary
 
         # Required values can be accessed directly
         title = param['title']
@@ -352,7 +341,7 @@ class UrlPromptConnector(BaseConnector):
 
         if phantom.is_fail(ret_val):
             return action_result.get_status()
-        
+
         prompt_id = response["id"]
         response["web_url"] = self._server_url + f"?id={prompt_id}"
 
