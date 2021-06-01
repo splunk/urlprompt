@@ -7,8 +7,10 @@ from django.utils import timezone
 from django_fsm import FSMField, transition
 from simple_history.models import HistoricalRecords
 
+
 class CustomUser(AbstractUser):
     pass
+
 
 class Prompt(models.Model):
 
