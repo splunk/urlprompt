@@ -20,7 +20,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.serializers import PromptSerializer
-from api.mixins import DRFDjangoAuditModelMixin
 
 logger = structlog.get_logger(__name__)
 
@@ -34,7 +33,7 @@ logger = structlog.get_logger(__name__)
 @method_decorator(name='destroy', decorator=swagger_auto_schema(
     operation_id="Delete Prompt"
 ))
-class PromptViewSet(DRFDjangoAuditModelMixin, mixins.RetrieveModelMixin,
+class PromptViewSet(mixins.RetrieveModelMixin,
                     mixins.CreateModelMixin,
                     mixins.ListModelMixin,
                     mixins.DestroyModelMixin,

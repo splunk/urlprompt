@@ -5,8 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from django_fsm import FSMField, transition
-from auditlog.registry import auditlog
-
+from simple_history.models import HistoricalRecords
 
 class CustomUser(AbstractUser):
     pass
@@ -36,4 +35,4 @@ class Prompt(models.Model):
 
         return super(Prompt, self).save(*args, **kwargs)
 
-auditlog.register(Prompt)
+    history = HistoricalRecords()

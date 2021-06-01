@@ -5,8 +5,9 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from core.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
+from simple_history.admin import SimpleHistoryAdmin
 
-class PromptAdmin(admin.ModelAdmin):
+class PromptAdmin(SimpleHistoryAdmin):
     list_display = ['id','status', 'created_by']
 
 admin.site.register(Prompt, PromptAdmin)
