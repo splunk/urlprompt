@@ -10,7 +10,7 @@ python manage.py migrate
 if [ "$URLPROMPT_ADMIN_USER" ] && [ ! -f .superuser ];
 then
     DJANGO_SUPERUSER_PASSWORD="$URLPROMPT_ADMIN_PASS"
-    python manage.py createsuperuser --noinput --username $URLPROMPT_ADMIN_USER --email $URLPROMPT_ADMIN_USER@urlprompt.changeme
+    python manage.py createsuperuser --noinput --username $URLPROMPT_ADMIN_USER --email $URLPROMPT_ADMIN_USER@urlprompt.changeme || true
     touch .superuser
 fi
 
