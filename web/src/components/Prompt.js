@@ -31,7 +31,9 @@ export default function Prompt(props) {
   const onSubmit = function ({ formData }) {
     setFormData(formData)
     answerPrompt(prompt.id, formData).then(res => {
-      setPrompt(res)
+      setPrompt({prompt})
+      setIsLoading(true)
+      window.location.reload();
     })
   }
 

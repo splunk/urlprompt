@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+    proxy:
+        image: nginx
+        volumes:
+        - ./nginx:/etc/nginx/conf.d
+        - ./ssl:/etc/ssl
+        ports:
+        - "4443:443"
+        restart: on-failure
+
+    urlprompt:
+        image: ghcr.io/splunk/urlprompt
+        environment:
+        - DEBUG=false
+        - DATABASE_URL=sqlite:////app/db/db.sqlite3
+        - SECRET_KEY=changemepls
+        - URLPROMPT_ADMIN_USER=urladmin
+        - URLPROMPT_ADMIN_PASS=changeme
+        volumes:
+        - ./db/:/app/db/
+        build: .
+        ports: 
+        - "5000:5000"

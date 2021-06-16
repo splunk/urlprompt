@@ -3,11 +3,14 @@ services:
     proxy:
         image: nginx
         volumes:
-        - ./proxy/nginx:/etc/nginx/conf.d
-        - ./proxy/ssl:/etc/ssl
+        - ./nginx:/etc/nginx/conf.d
+        - ./ssl:/etc/ssl
         ports:
         - "4443:443"
         restart: on-failure
+    
+    certbot:
+        image: certbot/certbot
 
     urlprompt:
         image: ghcr.io/splunk/urlprompt

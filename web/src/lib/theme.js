@@ -30,7 +30,7 @@ const MyCustomWidget = (props) => {
 
   const CustomText = function (props) {
     return (
-        <Text canClear value={props.value} onChange={(e, {value}) => props.onChange(value)} />
+        <Text canClear value={props.value || ''} onChange={(e, {value}) => props.onChange(value)} />
     )
 }
 
@@ -38,7 +38,7 @@ const CustomCheckbox = function (props) {
     return (
         <Switch
             key={props.value}
-            value={props.value}
+            value={props.value || false}
             onClick={() => props.onChange(!props.value)}
             selected={props.value}
             appearance="checkbox"
