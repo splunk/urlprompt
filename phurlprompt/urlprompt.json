@@ -200,6 +200,18 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.url",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.web_url",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 },
@@ -249,6 +261,18 @@
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.url",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.web_url",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -328,6 +352,18 @@
                     "contains": [],
                     "column_name": "text_label",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.url",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.data.*.web_url",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.status",
