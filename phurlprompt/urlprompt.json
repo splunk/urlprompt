@@ -75,7 +75,7 @@
                 "interval": {
                     "description": "Polling interval in minutes",
                     "data_type": "numeric",
-                    "required": true,
+                    "required": false,
                     "primary": true,
                     "contains": [],
                     "value_list": [],

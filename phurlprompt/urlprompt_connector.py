@@ -201,23 +201,24 @@ class UrlPromptConnector(BaseConnector):
         # Access action parameters passed in the 'param' dictionary
         prompt_id = param['id']
         # Required values can be accessed directly
-        interval = param['interval']
+        interval = param.get('interval')
 
         # Optional values should use the .get() function
         timeout = param.get('timeout')
 
-        if timeout:
-            polling2.poll(
-                lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
-                check_success=self._prompt_is_completed,
-                step=interval,
-                timeout=timeout)
-        else:
-            polling2.poll(
-                lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
-                check_success=self._prompt_is_completed,
-                step=interval,
-                poll_forever=True)
+        if interval:
+            if timeout:
+                polling2.poll(
+                    lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
+                    check_success=self._prompt_is_completed,
+                    step=interval,
+                    timeout=timeout)
+            else:
+                polling2.poll(
+                    lambda: self._make_rest_call(f'api/prompts/{prompt_id}', action_result, params=None),
+                    check_success=self._prompt_is_completed,
+                    step=interval,
+                    poll_forever=True)
 
         ret_val, response = self._make_rest_call(
             f'api/prompts/{prompt_id}', action_result, params=None
