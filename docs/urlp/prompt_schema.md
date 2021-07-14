@@ -52,7 +52,7 @@ URLP Prompts are based on [JSON Schema](http://json-schema.org/) definitions.
             "height": {"type": "integer", "title": "Height in cm"},
             "birthyear": {"type": "integer", "title": "Birthyear (YYYY)"},
             "eyecolor": {
-            "type:": "number",
+            "type": "number",
             "enum": [1, 2, 3, 4, 5],
             "enumNames": ["blue", "grey", "green", "brown", "other"]
             }
