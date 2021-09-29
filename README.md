@@ -86,3 +86,10 @@ Run local Mkdocs server
 ```
 mkdocs serve
 ```
+
+### License
+
+To generate the NOTICE file, run
+```
+poetry run pip-licenses --format=plain-vertical --order=license --with-authors --with-license-file --no-license-path --with-urls > NOTICE.md
+```
