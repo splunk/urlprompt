@@ -1,11 +1,9 @@
 # Getting started
 
-This guide outlines how to set up a new URLP deployment. The supported deployment option is through provided docker-compose files using a SQLite3 database as persistence which should
-work fine for most scenarios.
+This guide outlines how to set up a new URLP deployment. The supported deployment option is through provided docker-compose files using a SQLite3 database file to persist application data.
 
 ## Prerequisites
 
-* CentOS
 * Docker 
 * docker-compose
 
@@ -17,6 +15,7 @@ work fine for most scenarios.
 4. Run the stack
 
 ```
+docker-compose pull
 docker-compose up
 ```
 

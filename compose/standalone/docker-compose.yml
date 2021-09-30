@@ -9,7 +9,9 @@ services:
         - URLPROMPT_ADMIN_USER=urladmin
         - URLPROMPT_ADMIN_PASS=changeme
         volumes:
-        - ./db/:/app/db/
+        - urlprompt-db:/app/db/:rw
         build: .
         ports: 
         - "5000:5000"
+volumes:
+    urlprompt-db:

@@ -1,4 +1,4 @@
-site_name: URL Prompts for Phantom
+site_name: urlprompt
 repo_url: https://github.com/splunk/urlprompt
 repo_name: splunk/urlprompt
 edit_uri: edit/master/docs/
@@ -6,13 +6,12 @@ edit_uri: edit/master/docs/
 theme:
   name: material
   palette:
+    primary: green
     scheme: slate
-    primary: black
-  features:
-    - navigation.tabs
   icon:
     logo: material/link-variant
     repo: fontawesome/brands/github
+  favicon: assets/favicon.png
 
 markdown_extensions:
   - abbr
@@ -20,14 +19,16 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
-  - URLP Server:
+  - index.md
+  - Server Setup:
     - urlp/index.md
     - urlp/deployment.md
     - urlp/runbook.md
-    - urlp/prompt_schema.md
     - urlp/api_documentation.md
-  - Phantom App:
-    - app/index.md
+  - SOAR Setup:
+    - soar/index.md
+    - soar/playbooks.md
+    - soar/json_prompts.md
 
 plugins:
   - git-revision-date
