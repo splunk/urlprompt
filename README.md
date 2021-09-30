@@ -60,7 +60,12 @@ python manage.py createapitoken <username>
 
 Run the Django development server
 ```
-python manage.py runserver
+python manage.py runserver 7000
+```
+
+Run tests
+```
+pytest
 ```
 
 ### Web

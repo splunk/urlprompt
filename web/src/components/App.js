@@ -16,8 +16,8 @@ export default function App() {
                     <ColumnLayout.Column span={2}>
                     </ColumnLayout.Column>
                     <ColumnLayout.Column span={8}>
-                        <Heading level={4} style={{ marginBottom: '30px', color: '#7ecd7e' }}>
-                            URL Prompts for Phantom
+                        <Heading level={3} style={{ marginBottom: '30px', color: '#7ecd7e' }}>
+                            URL Prompts for SOAR
                     </Heading>
                         {hasID && <Prompt id={urlParams.get('id')}></Prompt>}
                     </ColumnLayout.Column>
