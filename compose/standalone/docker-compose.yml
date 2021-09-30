@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     urlprompt:
-        image: ghcr.io/splunk/urlprompt
+        image: ghcr.io/splunk/urlprompt:edge
         environment:
         - DEBUG=false
         - DATABASE_URL=sqlite:////app/db/db.sqlite3

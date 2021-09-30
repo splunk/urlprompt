@@ -142,7 +142,7 @@ SWAGGER_SETTINGS = {
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "formatters": {
         "json_formatter": {
             "()": structlog.stdlib.ProcessorFormatter,
@@ -150,7 +150,7 @@ LOGGING = {
         },
         "plain_console": {
             "()": structlog.stdlib.ProcessorFormatter,
-            "processor": structlog.dev.ConsoleRenderer(),
+            "processor": structlog.dev.ConsoleRenderer(colors=True),
         },
     },
     "handlers": {
@@ -183,8 +183,8 @@ LOGGING = {
 structlog.configure(
     processors=[
         structlog.stdlib.filter_by_level,
-        structlog.processors.TimeStamper(fmt="iso"),
         structlog.stdlib.add_logger_name,
+        structlog.processors.TimeStamper(fmt="iso"),
         structlog.stdlib.add_log_level,
         structlog.stdlib.PositionalArgumentsFormatter(),
         structlog.processors.StackInfoRenderer(),
